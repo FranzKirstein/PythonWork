@@ -1,0 +1,40 @@
+im not sure what i am missing but for some reason when i run %run (filename).py my files dont run  i get a bunch of errors. 
+i ran all my code and had no issues with it  
+
+
+
+OSError                                   Traceback (most recent call last)
+File ~\AppData\Local\Programs\Python\Python312\Lib\site-packages\IPython\core\magics\execution.py:716, in ExecutionMagics.run(self, parameter_s, runner, file_finder)
+    715     fpath = arg_lst[0]
+--> 716     filename = file_finder(fpath)
+    717 except IndexError as e:
+
+File ~\AppData\Local\Programs\Python\Python312\Lib\site-packages\IPython\utils\path.py:91, in get_py_filename(name)
+     90         return py_name
+---> 91 raise IOError("File `%r` not found." % name)
+
+OSError: File `'sum.py'` not found.
+
+The above exception was the direct cause of the following exception:
+
+Exception                                 Traceback (most recent call last)
+Cell In[1], line 1
+----> 1 get_ipython().run_line_magic('run', 'sum.py')
+
+File ~\AppData\Local\Programs\Python\Python312\Lib\site-packages\IPython\core\interactiveshell.py:2480, in InteractiveShell.run_line_magic(self, magic_name, line, _stack_depth)
+   2478     kwargs['local_ns'] = self.get_local_scope(stack_depth)
+   2479 with self.builtin_trap:
+-> 2480     result = fn(*args, **kwargs)
+   2482 # The code below prevents the output from being displayed
+   2483 # when using magics with decorator @output_can_be_silenced
+   2484 # when the last Python token in the expression is a ';'.
+   2485 if getattr(fn, magic.MAGIC_OUTPUT_CAN_BE_SILENCED, False):
+
+File ~\AppData\Local\Programs\Python\Python312\Lib\site-packages\IPython\core\magics\execution.py:727, in ExecutionMagics.run(self, parameter_s, runner, file_finder)
+    725     if os.name == 'nt' and re.match(r"^'.*'$",fpath):
+    726         warn('For Windows, use double quotes to wrap a filename: %run "mypath\\myfile.py"')
+--> 727     raise Exception(msg) from e
+    728 except TypeError:
+    729     if fpath in sys.meta_path:
+
+Exception: File `'sum.py'` not found.
